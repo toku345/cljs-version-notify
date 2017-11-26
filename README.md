@@ -7,8 +7,11 @@
 # Production Builds
 
 1. `lein cljsbuild once prod`
-2. `node server.js ...`
+2. `node index.js ...`
 
+
+# REPL Usage (Emacs)
+Use cider!
 
 # REPL Usage (Vim)
 
