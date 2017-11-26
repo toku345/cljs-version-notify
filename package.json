@@ -1,0 +1,16 @@
+{
+  "name": "cljs-version-notify",
+  "version": "0.1.0",
+  "private": "true",
+  "engines": {
+    "node": "6.x"
+  },
+  "main": "server.js",
+  "dependencies": {
+    "alexa-sdk": "^1.0.21"
+  },
+  "devDependencies": {
+    "source-map-support": "^0.4.15",
+    "ws": "^0.8.1"
+  }
+}
