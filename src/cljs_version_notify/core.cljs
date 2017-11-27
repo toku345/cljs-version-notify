@@ -12,8 +12,8 @@
                          "AMAZON.HelpIntent"   (fn [] (this-as this
                                                         (.emit this
                                                                ":ask"
-                                                               (str "ClojureScriptの最新バージョンお知らせする非公式のスキルです。"
-                                                                    "ClojureScriptの最新バージョン番号をお知らせしましょうか？"))))
+                                                               (str "クロージャースクリプトの最新バージョンお知らせする非公式のスキルです。"
+                                                                    "クロージャースクリプトの最新バージョン番号をお知らせしましょうか？"))))
                          "CljsVersionIntent"   (fn [] (this-as this
                                                         (let [message (str "最新のcljsのバージョンは" cljs-latest-version "です。")]
                                                           (.emit this ":tell" message)
