@@ -5,7 +5,7 @@
 
 (defonce Alexa (nodejs/require "alexa-sdk"))
 
-(def cljs-latest-version "1.9.946") ; TODO: I want to get it dynamically...
+(def ^:const cljs-latest-version "1.9.946") ; TODO: I want to get it dynamically...
 (def ^:const stop-message "さようなら。")
 
 (def skill-handlers #js {"LaunchRequest"       (fn [] (this-as this (.emit this "AMAZON.HelpIntent")))
