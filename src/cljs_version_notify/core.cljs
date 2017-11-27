@@ -11,7 +11,7 @@
 (def skill-handlers #js {"LaunchRequest"     (fn [] (this-as this (.emit this "AMAZON.HelpIntent")))
                          "AMAZON.HelpIntent" (fn [] (this-as this
                                                       (.emit this
-                                                             ":tell"
+                                                             ":ask"
                                                              (str "ClojureScriptの最新バージョンお知らせする非公式のスキルです。"
                                                                   "ClojureScriptの最新バージョン番号をお知らせしましょうか？"))))
                          "CljsVersionIntent" (fn [] (this-as this
