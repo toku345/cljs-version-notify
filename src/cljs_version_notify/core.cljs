@@ -6,18 +6,20 @@
 (defonce Alexa (nodejs/require "alexa-sdk"))
 
 (def cljs-latest-version "1.9.946") ; TODO: I want to get it dynamically...
+(def ^:const stop-message "さようなら。")
 
-
-(def skill-handlers #js {"LaunchRequest"     (fn [] (this-as this (.emit this "AMAZON.HelpIntent")))
-                         "AMAZON.HelpIntent" (fn [] (this-as this
-                                                      (.emit this
-                                                             ":ask"
-                                                             (str "ClojureScriptの最新バージョンお知らせする非公式のスキルです。"
-                                                                  "ClojureScriptの最新バージョン番号をお知らせしましょうか？"))))
-                         "CljsVersionIntent" (fn [] (this-as this
-                                                      (let [message (str "最新のcljsのバージョンは" cljs-latest-version "です。")]
-                                                        (.emit this ":tell" message)
-                                                        (.log js/console (str "message: " message)))))})
+(def skill-handlers #js {"LaunchRequest"       (fn [] (this-as this (.emit this "AMAZON.HelpIntent")))
+                         "AMAZON.HelpIntent"   (fn [] (this-as this
+                                                        (.emit this
+                                                               ":ask"
+                                                               (str "ClojureScriptの最新バージョンお知らせする非公式のスキルです。"
+                                                                    "ClojureScriptの最新バージョン番号をお知らせしましょうか？"))))
+                         "CljsVersionIntent"   (fn [] (this-as this
+                                                        (let [message (str "最新のcljsのバージョンは" cljs-latest-version "です。")]
+                                                          (.emit this ":tell" message)
+                                                          (.log js/console (str "message: " message)))))
+                         "AMAZON.CancelIntent" (fn [] (this-as this (.emit this ":tell" stop-message)))
+                         "AMAZON.StopIntent"   (fn [] (this-as this (.emit this ":tell" stop-message)))})
 
 (defn- handler [event context callback]
   (let [alexa (.handler Alexa event context)
