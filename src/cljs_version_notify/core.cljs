@@ -9,6 +9,7 @@
 (def ^:const stop-message "さようなら。")
 
 (def skill-handlers #js {"LaunchRequest"       (fn [] (this-as this (.emit this "AMAZON.HelpIntent")))
+                         "SessionEndedRequest" (fn [] (this-as this (.emit this "AMAZON.StopIntent")))
                          "AMAZON.HelpIntent"   (fn [] (this-as this
                                                         (.emit this
                                                                ":ask"
