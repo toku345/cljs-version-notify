@@ -19,7 +19,7 @@
                                                         (let [message (str "最新のcljsのバージョンは" cljs-latest-version "です。")]
                                                           (.emit this ":tell" message)
                                                           (.log js/console (str "message: " message)))))
-                         "AMAZON.CancelIntent" (fn [] (this-as this (.emit this ":tell" stop-message)))
+                         "AMAZON.CancelIntent" (fn [] (this-as this (.emit this "AMAZON.StopIntent")))
                          "AMAZON.StopIntent"   (fn [] (this-as this (.emit this ":tell" stop-message)))})
 
 (defn- handler [event context callback]
