@@ -10,3 +10,6 @@
 figwheel_server.log
 pom.xml
 index.js
+sam-template.yml
+sam-template-output.yml
+app.zip
