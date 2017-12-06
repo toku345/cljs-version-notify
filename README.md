@@ -10,6 +10,47 @@
 2. `node index.js ...`
 
 
+# Production Deploy
+
+1. Build production code
+
+2. Prepare sam-template.yml file
+
+``` console
+$ cp sample-speech.yml.sample sam-template.yml
+```
+
+``` console
+# if you need
+$ aws s3 mb s3://{your-own-bucket-name} --region {your-region}
+```
+
+Set your S3 bucket name on sam-template.yml.
+
+
+3. Package
+
+``` console
+$ zip app.zip index.js
+
+$ aws cloudformation package \
+  --template-file sam-template.yml \
+  --output-template-file sam-template-output.yml \
+  --s3-bucket {bucket_name}
+```
+
+4. Deploy
+
+``` console
+$ aws cloudformation deploy \
+  --template-file sam-template-output.yml \
+  --stack-name {my-stack-name} \
+  --capabilities CAPABILITY_IAM
+```
+
+Rewrite your own s3-bucket
+
+
 # REPL Usage (Emacs)
 Use cider!
 
