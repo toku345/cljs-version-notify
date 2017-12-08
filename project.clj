@@ -1,4 +1,4 @@
-(defproject cljs-version-notify "0.1.0-SNAPSHOT"
+(defproject cljs-version-notify "0.1.0"
   :description "Alexa skill notify ClojureScript version."
   :url "http://example.com/FIXME"
 
