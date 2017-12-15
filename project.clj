@@ -26,13 +26,18 @@
                                    :npm-deps {:alexa-sdk "^1.0.21"}
                                    :install-deps true
                                    :optimizations :none
-                                   :source-map-timestamp true}}
+                                   :source-map-timestamp true
+                                   :recompile-dependents false
+                                   :static-fns　false}}
                        {:id "prod"
                         :source-paths ["src"]
                         :compiler {:output-to "index.js"
                                    :output-dir "target/js/compiled/prod"
                                    :target :nodejs
-                                   :optimizations :simple}}]}
+                                   :optimizations :simple
+                                   :recompile-dependents true ; Same as default value
+                                   :static-fns true           ; Same as default value
+                                   }}]}
 
   :profiles {:dev {:dependencies [[figwheel-sidecar "0.5.13"]
                                   [com.cemerick/piggieback "0.2.2"]]
