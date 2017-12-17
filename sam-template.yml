@@ -14,8 +14,15 @@ Resources:
     Properties:
       Handler: index.checker_handler
       Runtime: nodejs6.10
+      Policies: AmazonDynamoDBFullAccess
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref Table
       Events:
         Timer:
           Type: Schedule
           Properties:
             Schedule: rate(3 minutes)
+
+  Table:
+    Type: AWS::Serverless::SimpleTable

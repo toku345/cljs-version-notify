@@ -25,7 +25,8 @@
                                    :output-to "target/js/compiled/cljs_version_notify.js"
                                    :output-dir "target/js/compiled/dev"
                                    :target :nodejs
-                                   :npm-deps {:alexa-sdk "^1.0.21"}
+                                   :npm-deps {:alexa-sdk "^1.0.21"
+                                              :aws-sdk "^2.156.0"}
                                    :install-deps true
                                    :optimizations :none
                                    :source-map-timestamp true
