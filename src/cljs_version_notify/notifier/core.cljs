@@ -30,4 +30,4 @@
     (.registerHandlers alexa skill-handlers)
     (.execute alexa)))
 
-(set! (.-exports js/module) #js {:handler handler})
+(set! (.-exports js/module) #js {:notifier_handler handler})
