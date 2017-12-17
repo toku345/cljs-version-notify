@@ -1,11 +1,11 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Resources:
-  TestFunction:
+  AlexaSkillFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: index.handler
+      Handler: index.notifier_handler
       Runtime: nodejs6.10
-      Environment:
-        Variables:
-          S3_BUCKET: {bucket_name}
+      Events:
+        AlexaSkillEvent:
+          Type: AlexaSkill
