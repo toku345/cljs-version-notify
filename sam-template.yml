@@ -9,3 +9,13 @@ Resources:
       Events:
         AlexaSkillEvent:
           Type: AlexaSkill
+  VersionCheckerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.checker_handler
+      Runtime: nodejs6.10
+      Events:
+        Timer:
+          Type: Schedule
+          Properties:
+            Schedule: rate(3 minutes)

@@ -17,11 +17,14 @@
 (defn get! [url]
   (p/then (node/get url) decode))
 
-(defn get-latest-version []
- (p/then (get! URL)
+(defn- handler [_event _context callback]
+  (p/then (get! URL)
          (fn [response]
            (-> (:body response)
                (get "response")
                (get "docs")
                first
-               (get "latestVersion")))))
+               (get "latestVersion")
+               (callback nil)))))
+
+(set! (.-checker_handler (.-exports js/module)) handler)
