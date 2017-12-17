@@ -6,6 +6,10 @@ Resources:
     Properties:
       Handler: index.notifier_handler
       Runtime: nodejs6.10
+      Policies: AmazonDynamoDBReadOnlyAccess
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref Table
       Events:
         AlexaSkillEvent:
           Type: AlexaSkill

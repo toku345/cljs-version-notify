@@ -1,11 +1,13 @@
 (ns cljs-version-notify.notifier.core
-  (:require [cljs.nodejs :as nodejs]))
+  (:require [cljs.nodejs :as nodejs]
+            [cljs-version-notify.notifier.db :refer [get-version]]
+            [promesa.core :as p]))
 
 (nodejs/enable-util-print!)
 
 (defonce Alexa (nodejs/require "alexa-sdk"))
 
-(def ^:const cljs-latest-version "1.9.946") ; TODO: I want to get it dynamically...
+(def cljs-latest-version (get-version))
 (def ^:const stop-message "クロージャースクリプトの最新バージョン番号が気になったら、また声をかけてくださいね。")
 
 (def skill-handlers #js {"LaunchRequest"       (fn [] (this-as this (.emit this "AMAZON.HelpIntent")))
